@@ -429,6 +429,7 @@ func (a *AWSActuator) syncSTSSecret(awsSTSIAMRoleARN string, cloudTokenPath stri
 			secret.StringData = map[string]string{}
 		}
 		secret.StringData["credentials"] = fmt.Sprintf(awsSTSCredsTemplate, awsSTSIAMRoleARN, cloudTokenPath)
+		secret.StringData["role_arn"] = awsSTSIAMRoleARN
 		secret.Type = corev1.SecretTypeOpaque
 		return nil
 	})
